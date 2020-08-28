@@ -15,7 +15,7 @@ class GraphBFS():
             state_height = len(state.moves)
             if height != state_height:
                 height = state_height
-                print(height)
+                print('Current height: ', height)
             if state == goal:
                 print('Final solution length: ', len(state.moves))
                 return state.moves

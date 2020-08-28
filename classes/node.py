@@ -45,29 +45,29 @@ class Node():
                     break
 
         movements = []
-        # Left
+        # Right
         if col+1 < max_size:
             new_state = Node(deepcopy(self.state), self.moves.copy())
             new_state.swap(row, col, row, col+1)
-            new_state.insert_move('Left')
+            new_state.insert_move('Right')
             movements.append(new_state)
-        # Right
+        # Left
         if col-1 >= 0:
             new_state = Node(deepcopy(self.state), self.moves.copy())
             new_state.swap(row, col, row, col-1)
-            new_state.insert_move('Right')
+            new_state.insert_move('Left')
             movements.append(new_state)
-        # Up
+        # Down
         if row+1 < max_size:
             new_state = Node(deepcopy(self.state), self.moves.copy())
             new_state.swap(row, col, row+1, col)
-            new_state.insert_move('Up')
+            new_state.insert_move('Down')
             movements.append(new_state)
-        # Down
+        # Up
         if row-1 >= 0:
             new_state = Node(deepcopy(self.state), self.moves.copy())
             new_state.swap(row, col, row-1, col)
-            new_state.insert_move('Down')
+            new_state.insert_move('Up')
             movements.append(new_state)
         
         return movements
