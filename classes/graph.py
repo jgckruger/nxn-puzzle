@@ -1,24 +1,26 @@
 from classes.node import Node
 
-class Graph():
-    nodes = []
+# Source: ethesis.nitrkl.ac.in/5575/1/110CS0081-1.pdf
+class GraphBFS():
+    def bfs(self, start_matrix, goal_matrix):
+        start = Node(start_matrix)
+        goal = Node(goal_matrix)
 
-    def add_node(self, value):
-        self.nodes.append(Node(value))
-                    
-    def add_edge(self, initial_node_val, end_node_val):
-        initial_node = [ node for node in self.nodes if node.value == initial_node_val ][0]
-        end_node = [ node for node in self.nodes if node.value == end_node_val ][0]
-        initial_node.add_edge(end_node)
-        end_node.add_edge(initial_node)
-
-    def bfs(self, start, value):
-        start_node = [ node for node in self.nodes if node.value == start ][0]
-        list_of_nodes = [start_node]
-
-        start_node = 
-
-        
-            
-            
-
+        prev = None
+        list_of_visited = []
+        list_of_states = [start]
+        height = 0
+        while len(list_of_states):
+            state = list_of_states.pop(0)
+            state_height = len(state.moves)
+            if height != state_height:
+                height = state_height
+                print(height)
+            if state == goal:
+                print('Final solution length: ', len(state.moves))
+                return state.moves
+            new_positions = [ state for state in state.possible_movements() if not(state in list_of_visited) ]
+            list_of_states += new_positions
+            list_of_visited.append(state)
+    
+        return None
