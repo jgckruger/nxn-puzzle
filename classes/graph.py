@@ -10,13 +10,16 @@ class GraphBFS():
         list_of_visited = []
         list_of_states = [start]
         height = 0
+        comp = 0
         while len(list_of_states):
             state = list_of_states.pop(0)
             state_height = len(state.moves)
             if height != state_height:
                 height = state_height
                 print('Current height: ', height)
+            comp += 1
             if state == goal:
+                print('Comparisons: ', comp)
                 print('Final solution length: ', len(state.moves))
                 return state.moves
             new_positions = [ state for state in state.possible_movements() if not(state in list_of_visited) ]
