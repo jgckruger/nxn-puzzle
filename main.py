@@ -4,7 +4,7 @@ from utils.read_input import read_input
 try:
     filepath = sys.argv[1]
 except:
-    filepath = 'samples/sample.txt'
+    filepath = 'samples/6moves.txt'
 
 init_matrix, goal_matrix = read_input(filepath)
 
