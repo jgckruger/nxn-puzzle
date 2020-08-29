@@ -6,11 +6,14 @@
 # i = 2, j = 1, max_size = 3
 
 from copy import deepcopy
+import collections
 
 wildcard = 'x'
 class Node():
     state = None
-    moves = []
+    #moves = []
+    moves = collections.deque()
+
 
     def __init__(self, state, moves = []):
         self.state = state
@@ -19,8 +22,9 @@ class Node():
     def __eq__(self, other):
         if other is None:
             return False
-        for row in range(len(self.state)):
-            for col in range(len(self.state[row])):
+        N = len(self.state)
+        for row in range(N):
+            for col in range(N):
                 if self.state[row][col] != other.state[row][col]:
                     return False
         return True
@@ -37,8 +41,8 @@ class Node():
         # Find the x
         row = col = -1
         max_size = len(self.state[0])
-        for i in range(len(self.state)):
-            for j in range(len(self.state[i])):
+        for i in range(max_size):
+            for j in range(max_size):
                 if self.state[i][j] == wildcard:
                     row = i
                     col = j

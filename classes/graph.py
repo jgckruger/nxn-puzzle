@@ -1,4 +1,5 @@
 from classes.node import Node
+import collections
 
 # Source: ethesis.nitrkl.ac.in/5575/1/110CS0081-1.pdf
 class GraphBFS():
@@ -8,11 +9,15 @@ class GraphBFS():
 
         prev = None
         list_of_visited = []
-        list_of_states = [start]
+        #list_of_states = [start]
+        list_of_states = collections.deque([start]) 
         height = 0
         comp = 0
+
+        
         while len(list_of_states):
-            state = list_of_states.pop(0)
+            #state = list_of_states.pop(0)
+            state = list_of_states.popleft()
             state_height = len(state.moves)
             if height != state_height:
                 height = state_height

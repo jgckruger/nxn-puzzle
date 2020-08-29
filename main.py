@@ -1,10 +1,11 @@
 from classes.graph import GraphBFS
 from utils.read_input import read_input
+import time
 
 try:
     filepath = sys.argv[1]
 except:
-    filepath = 'samples/6moves.txt'
+    filepath = 'samples/sample.txt'
 
 init_matrix, goal_matrix = read_input(filepath)
 
@@ -20,5 +21,6 @@ goal_matrix = [
     [7,8,'x'],
 ]
 """
-moves = GraphBFS().bfs(init_matrix, goal_matrix)
+t = time.time()
+moves = GraphBFS().bfs(init_matrix, goal_matrix) 
 print(moves)
