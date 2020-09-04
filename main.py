@@ -24,4 +24,5 @@ goal_matrix = [
 """
 t = time.time()
 moves = GraphBFS().bfs(init_matrix, goal_matrix) 
+print("--- %.2f seconds ---" % (time.time() - t))
 print(moves)
