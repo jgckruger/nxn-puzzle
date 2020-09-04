@@ -3,14 +3,18 @@ from utils.read_input import read_input
 import time
 import sys
 
+# Usage: python3 main.py path_to_file should_use_hash_set?
+# path to file: ./samples/6moves.txt
+# should_use_hash_set: True or False, defaults to True
+
 try:
     filepath = sys.argv[1]
 except:
     filepath = 'samples/sample.txt'
 try:
-    visited_nodes_heuristic = sys.argv[2] != 'False'
+    should_use_hash_set = sys.argv[2] != 'False'
 except:
-    visited_nodes_heuristic = True
+    should_use_hash_set = True
 
 init_matrix, goal_matrix = read_input(filepath)
 
@@ -27,6 +31,6 @@ goal_matrix = [
 ]
 """
 t = time.time()
-moves = GraphBFS().bfs(init_matrix, goal_matrix, visited_nodes_heuristic) 
+moves = GraphBFS().bfs(init_matrix, goal_matrix, should_use_hash_set) 
 print("--- %.2f seconds ---" % (time.time() - t))
 print(moves)
