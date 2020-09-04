@@ -29,6 +29,9 @@ class Node():
                     return False
         return True
 
+    def flatten(self):
+        return str(self.state)
+
     def swap(self, i, j, new_i, new_j):
         temp = self.state[i][j]
         self.state[i][j] = self.state[new_i][new_j]

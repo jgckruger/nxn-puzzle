@@ -8,7 +8,7 @@ class GraphBFS():
         goal = Node(goal_matrix)
 
         prev = None
-        list_of_visited = []
+        list_of_visited = set()
         #list_of_states = [start]
         list_of_states = collections.deque([start]) 
         height = 0
@@ -27,8 +27,8 @@ class GraphBFS():
                 print('Comparisons: ', comp)
                 print('Final solution length: ', len(state.moves))
                 return state.moves
-            new_positions = [ state for state in state.possible_movements() if not(state in list_of_visited) ]
+            new_positions = [ state for state in state.possible_movements() if not(state.flatten() in list_of_visited) ]
             list_of_states += new_positions
-            list_of_visited.append(state)
+            list_of_visited.add(state.flatten())
     
         return None
