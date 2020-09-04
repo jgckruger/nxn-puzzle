@@ -1,7 +1,7 @@
 from classes.node import Node
 import collections
 
-# Source: ethesis.nitrkl.ac.in/5575/1/110CS0081-1.pdf
+# Source of the image of BFS for 8-puzzle ethesis.nitrkl.ac.in/5575/1/110CS0081-1.pdf
 class GraphBFS():
     def bfs(self, start_matrix, goal_matrix, should_use_hash_set = True):
         start = Node(start_matrix)
