@@ -10,7 +10,8 @@ import sys
 try:
     filepath = sys.argv[1]
 except:
-    filepath = 'samples/sample.txt'
+    filepath = 'samples/sample2.txt'
+
 try:
     should_use_hash_set = sys.argv[2] != 'False'
 except:

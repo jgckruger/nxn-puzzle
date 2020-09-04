@@ -8,7 +8,7 @@
 from copy import deepcopy
 import collections
 
-wildcard = 'x'
+wildcard = 0
 class Node():
     state = None
     #moves = []

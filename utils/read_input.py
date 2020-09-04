@@ -20,8 +20,8 @@ def read_input(filepath):
 
             for j in range(N):
                 goal_matrix[i][j] = i*N+j+1
-                init_matrix[i][j] = numbers[j] if numbers[j] == 'x' else int(numbers[j])
-            goal_matrix[N-1][N-1] = 'x'
+                init_matrix[i][j] = numbers[j] if numbers[j] == 0 else int(numbers[j])
+            goal_matrix[N-1][N-1] = 0
             i+=1
             
 
