@@ -7,6 +7,10 @@ try:
     filepath = sys.argv[1]
 except:
     filepath = 'samples/sample.txt'
+try:
+    visited_nodes_heuristic = sys.argv[2] != 'False'
+except:
+    visited_nodes_heuristic = True
 
 init_matrix, goal_matrix = read_input(filepath)
 
@@ -23,6 +27,6 @@ goal_matrix = [
 ]
 """
 t = time.time()
-moves = GraphBFS().bfs(init_matrix, goal_matrix) 
+moves = GraphBFS().bfs(init_matrix, goal_matrix, visited_nodes_heuristic) 
 print("--- %.2f seconds ---" % (time.time() - t))
 print(moves)

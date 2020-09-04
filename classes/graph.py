@@ -3,7 +3,7 @@ import collections
 
 # Source: ethesis.nitrkl.ac.in/5575/1/110CS0081-1.pdf
 class GraphBFS():
-    def bfs(self, start_matrix, goal_matrix):
+    def bfs(self, start_matrix, goal_matrix, visited_nodes_heuristic = False):
         start = Node(start_matrix)
         goal = Node(goal_matrix)
 
@@ -29,6 +29,7 @@ class GraphBFS():
                 return state.moves
             new_positions = [ state for state in state.possible_movements() if not(state.flatten() in list_of_visited) ]
             list_of_states += new_positions
-            list_of_visited.add(state.flatten())
+            if visited_nodes_heuristic:
+                list_of_visited.add(state.flatten())
     
         return None
