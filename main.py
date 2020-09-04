@@ -1,6 +1,7 @@
 from classes.graph import GraphBFS
 from utils.read_input import read_input
 import time
+import sys
 
 try:
     filepath = sys.argv[1]
