@@ -1,4 +1,4 @@
-from classes.graph import GraphBFS
+from classes.graph import Graph
 from utils.read_input import read_input
 import time
 import sys
@@ -31,6 +31,6 @@ goal_matrix = [
 ]
 """
 t = time.time()
-moves = GraphBFS().bfs(init_matrix, goal_matrix, should_use_hash_set) 
+moves = Graph().bfs(init_matrix, goal_matrix, should_use_hash_set) 
 print("--- %.2f seconds ---" % (time.time() - t))
 print(moves)
