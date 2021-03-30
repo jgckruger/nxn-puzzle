@@ -7,6 +7,7 @@
 
 from copy import deepcopy
 import collections
+from math import floor
 
 wildcard = 'x'
 class Node():
@@ -18,6 +19,7 @@ class Node():
     def __init__(self, state, moves = []):
         self.state = state
         self.moves = moves
+        self.n = len(state)
 
     def __eq__(self, other):
         if other is None:
@@ -100,3 +102,35 @@ class Node():
             movements.append(new_state)
         
         return movements
+
+    def __str__(self):
+        ret = ''
+        for x in range(self.n):
+            for y in range(self.n):
+                ret += str(self.state[x][y]) + ' '
+            ret +='\n'
+
+        return ret
+
+    def manhattan_distance(self, other):
+        total_manhattan_distance = 0
+
+        initial_positions = dict()
+        goal_positions = dict()
+
+        # sets the goal positions of each element
+        for x in range(self.n):
+            for y in range(self.n):
+                goal = other[x][y]
+                goal_positions[goal] = (x, y)
+
+        # checks the lookup table for the goal positions of each element
+        for x in range(self.n):
+            for y in range(self.n):
+                e = self.state[x][y]
+                goal_x, goal_y = goal_positions[e]
+                manhattan_distance = goal_distance = abs(goal_x - x) + abs(goal_y - y)
+                print(e, x, y, goal_x, goal_y, manhattan_distance)
+                total_manhattan_distance += abs(goal_x - x) + abs(goal_y - y)
+
+        return total_manhattan_distance
