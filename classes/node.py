@@ -29,6 +29,28 @@ class Node():
                     return False
         return True
 
+    def __ne__(self, other):
+        if other is None:
+            return False
+        N = len(self.state)
+        for row in range(N):
+            for col in range(N):
+                if self.state[row][col] != other.state[row][col]:
+                    return True
+        return False
+
+    def __lt__(self, other):
+        return self.weight < other.weight
+
+    def __le__(self, other):
+        return self.weight <= other.weight
+
+    def __gt__(self, other):
+        return self.weight > other.weight
+
+    def __ge__(self, other):
+        return self.weight >= other.weight
+
     def flatten(self):
         return str(self.state)
 
