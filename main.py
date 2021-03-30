@@ -30,6 +30,15 @@ goal_matrix = [
     [7,8,'x'],
 ]
 """
+
+print('------  A* ------')
+t = time.time()
+moves = Graph().astar(init_matrix, goal_matrix, should_use_hash_set) 
+print("--- %.2f seconds ---" % (time.time() - t))
+print(moves)
+
+
+print('------ BFS ------')
 t = time.time()
 moves = Graph().bfs(init_matrix, goal_matrix, should_use_hash_set) 
 print("--- %.2f seconds ---" % (time.time() - t))

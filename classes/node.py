@@ -16,10 +16,11 @@ class Node():
     moves = collections.deque()
 
 
-    def __init__(self, state, moves = []):
+    def __init__(self, state, moves = [], weight = 0):
         self.state = state
         self.moves = moves
         self.n = len(state)
+        self.weight = weight
 
     def __eq__(self, other):
         if other is None:
@@ -55,6 +56,10 @@ class Node():
 
     def flatten(self):
         return str(self.state)
+
+    def calculate_weight(self, goal):
+        self.weight = self.manhattan_distance(goal)
+        return self.weight
 
     def swap(self, i, j, new_i, new_j):
         temp = self.state[i][j]
@@ -121,7 +126,7 @@ class Node():
         # sets the goal positions of each element
         for x in range(self.n):
             for y in range(self.n):
-                goal = other[x][y]
+                goal = other.state[x][y]
                 goal_positions[goal] = (x, y)
 
         # checks the lookup table for the goal positions of each element
@@ -129,8 +134,7 @@ class Node():
             for y in range(self.n):
                 e = self.state[x][y]
                 goal_x, goal_y = goal_positions[e]
-                manhattan_distance = goal_distance = abs(goal_x - x) + abs(goal_y - y)
-                print(e, x, y, goal_x, goal_y, manhattan_distance)
+                manhattan_distance = abs(goal_x - x) + abs(goal_y - y)
                 total_manhattan_distance += abs(goal_x - x) + abs(goal_y - y)
 
         return total_manhattan_distance
