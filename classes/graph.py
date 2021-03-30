@@ -24,7 +24,7 @@ class Graph():
             state_height = len(state.moves)
             if height != state_height:
                 height = state_height
-                print('Current height: ', height, 'Heap size: ', len(list_of_states))
+                print('Weight: ', state.weight, 'Current height: ', height, 'Heap size: ', len(list_of_states))
             comp += 1
             if state == goal:
                 print('Comparisons: ', comp)
